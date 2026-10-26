@@ -1,0 +1,175 @@
+{
+  "Color": {
+    "Navy": {
+      "Darkest": {
+        "value": "#05162A",
+        "type": "color",
+        "description": "Brand Deep Background / Primary Darkest Navy"
+      },
+      "Dark": {
+        "value": "#0B2545",
+        "type": "color",
+        "description": "Brand Dark Navy for Titles & Headers"
+      },
+      "Primary": {
+        "value": "#13315C",
+        "type": "color",
+        "description": "Main Navy Accent for Buttons & Active Elements"
+      },
+      "Light": {
+        "value": "#134074",
+        "type": "color",
+        "description": "Secondary Navy Accent"
+      },
+      "Lighter": {
+        "value": "#1D5A9C",
+        "type": "color",
+        "description": "Interactive Navy / Hover State"
+      },
+      "SurfaceLight": {
+        "value": "#F0F4F8",
+        "type": "color",
+        "description": "Soft Navy Tinted Background"
+      }
+    },
+    "Orange": {
+      "Primary": {
+        "value": "#FF7A00",
+        "type": "color",
+        "description": "Vibrant Orange Primary Accent Button"
+      },
+      "Light": {
+        "value": "#FF9429",
+        "type": "color",
+        "description": "Orange Light Hover / Highlight"
+      },
+      "Dark": {
+        "value": "#E05E00",
+        "type": "color",
+        "description": "Orange Pressed State"
+      },
+      "Accent": {
+        "value": "#FFB703",
+        "type": "color",
+        "description": "Secondary Warm Amber Accent"
+      }
+    },
+    "Status": {
+      "Success": {
+        "value": "#00A86B",
+        "type": "color",
+        "description": "Active / Approved Status Badge"
+      },
+      "Warning": {
+        "value": "#FF9F1C",
+        "type": "color",
+        "description": "Pending / In Progress Status Badge"
+      },
+      "Danger": {
+        "value": "#E63946",
+        "type": "color",
+        "description": "Rejected / Damaged Status Badge"
+      },
+      "Info": {
+        "value": "#2A9D8F",
+        "type": "color",
+        "description": "Informational Status Badge"
+      }
+    },
+    "Background": {
+      "Light": {
+        "value": "#F8FAFC",
+        "type": "color",
+        "description": "Scaffold Light Mode Background"
+      },
+      "Dark": {
+        "value": "#07192F",
+        "type": "color",
+        "description": "Scaffold Dark Mode Background"
+      }
+    },
+    "Card": {
+      "Light": {
+        "value": "#FFFFFF",
+        "type": "color",
+        "description": "Card Surface Light"
+      },
+      "Dark": {
+        "value": "#0E2A4D",
+        "type": "color",
+        "description": "Card Surface Dark"
+      }
+    }
+  },
+  "Gradients": {
+    "NavyGradient": {
+      "value": "linear-gradient(135deg, #0B2545 0%, #134074 100%)",
+      "type": "color"
+    },
+    "OrangeGradient": {
+      "value": "linear-gradient(135deg, #FF7A00 0%, #FF5400 100%)",
+      "type": "color"
+    },
+    "GlassGradientLight": {
+      "value": "linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(240,244,248,0.6) 100%)",
+      "type": "color"
+    },
+    "GlassGradientDark": {
+      "value": "linear-gradient(135deg, rgba(19,49,92,0.8) 0%, rgba(11,37,69,0.6) 100%)",
+      "type": "color"
+    }
+  },
+  "Typography": {
+    "FontFamily": {
+      "value": "Plus Jakarta Sans",
+      "type": "fontFamilies"
+    },
+    "HeadlineLarge": {
+      "fontSize": { "value": "28", "type": "fontSizes" },
+      "fontWeight": { "value": "Bold", "type": "fontWeights" },
+      "lineHeight": { "value": "1.2", "type": "lineHeights" }
+    },
+    "HeadlineMedium": {
+      "fontSize": { "value": "22", "type": "fontSizes" },
+      "fontWeight": { "value": "Bold", "type": "fontWeights" },
+      "lineHeight": { "value": "1.3", "type": "lineHeights" }
+    },
+    "TitleLarge": {
+      "fontSize": { "value": "18", "type": "fontSizes" },
+      "fontWeight": { "value": "Bold", "type": "fontWeights" },
+      "lineHeight": { "value": "1.3", "type": "lineHeights" }
+    },
+    "TitleMedium": {
+      "fontSize": { "value": "15", "type": "fontSizes" },
+      "fontWeight": { "value": "SemiBold", "type": "fontWeights" },
+      "lineHeight": { "value": "1.4", "type": "lineHeights" }
+    },
+    "BodyLarge": {
+      "fontSize": { "value": "14", "type": "fontSizes" },
+      "fontWeight": { "value": "Medium", "type": "fontWeights" },
+      "lineHeight": { "value": "1.5", "type": "lineHeights" }
+    },
+    "BodyMedium": {
+      "fontSize": { "value": "13", "type": "fontSizes" },
+      "fontWeight": { "value": "Regular", "type": "fontWeights" },
+      "lineHeight": { "value": "1.5", "type": "lineHeights" }
+    }
+  },
+  "BorderRadius": {
+    "Sm": { "value": "8px", "type": "borderRadius" },
+    "Md": { "value": "12px", "type": "borderRadius" },
+    "Lg": { "value": "16px", "type": "borderRadius" },
+    "Xl": { "value": "24px", "type": "borderRadius" },
+    "Full": { "value": "9999px", "type": "borderRadius" }
+  },
+  "Elevation": {
+    "Card": {
+      "x": "0",
+      "y": "2",
+      "blur": "8",
+      "spread": "0",
+      "color": "rgba(19, 49, 92, 0.06)",
+      "type": "boxShadow"
+    }
+  }
+}

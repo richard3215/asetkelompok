@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SI-ASET Mobile - Figma UI Export Bundle (Kelompok 1)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Color Tokens */
+      --navy-darkest: #05162A;
+      --navy-dark: #0B2545;
+      --navy-primary: #13315C;
+      --navy-light: #134074;
+      --navy-lighter: #1D5A9C;
+      --navy-surface-light: #F0F4F8;
+
+      --orange-primary: #FF7A00;
+      --orange-light: #FF9429;
+      --orange-dark: #E05E00;
+      --orange-accent: #FFB703;
+
+      --status-success: #00A86B;
+      --status-success-bg: #E3FCEF;
+      --status-warning: #FF9F1C;
+      --status-warning-bg: #FFF0B3;
+      --status-danger: #E63946;
+      --status-danger-bg: #FFEBE6;
+      --status-info: #2A9D8F;
+      --status-info-bg: #DEEBFF;
+
+      --bg-light: #F8FAFC;
+      --bg-dark: #07192F;
+      --card-light: #FFFFFF;
+      --card-dark: #0E2A4D;
+
+      --font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-family);
+    }
+
+    body {
+      background-color: #0d1117;
+      color: #e6edf3;
+      padding: 40px;
+    }
+
+    .header-info {
+      margin-bottom: 40px;
+      padding: 24px;
+      background: linear-gradient(135deg, #0B2545 0%, #134074 100%);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .header-info h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+    }
+
+    .header-info p {
+      color: #a0aec0;
+      font-size: 14px;
+    }
+
+    /* Screen Canvas Grid */
+    .screen-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: flex-start;
+    }
+
+    /* Mobile Screen Frame Specification (Standard iPhone 390x844) */
+    .mobile-frame {
+      width: 390px;
+      height: 844px;
+      background-color: var(--bg-light);
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      border: 8px solid #1f2937;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .frame-title {
+      position: absolute;
+      top: -30px;
+      left: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #38bdf8;
+      letter-spacing: 0.5px;
+    }
+
+    /* Status Bar Mock */
+    .status-bar {
+      height: 44px;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy-dark);
+    }
+
+    /* Navigation Bar */
+    .app-bar {
+      height: 56px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .app-bar-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy-dark);
+    }
+
+    /* Screen Body Content */
+    .screen-content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* UI Cards */
+    .card {
+      background: var(--card-light);
+      border-radius: 16px;
+      padding: 16px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 12px rgba(19, 49, 92, 0.06);
+    }
+
+    .glass-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(240,244,248,0.7) 100%);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 8px 24px rgba(5, 22, 42, 0.08);
+    }
+
+    /* UI Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .badge-success { background: var(--status-success-bg); color: var(--status-success); }
+    .badge-warning { background: var(--status-warning-bg); color: #8F4D00; }
+    .badge-danger { background: var(--status-danger-bg); color: #BF2600; }
+    .badge-info { background: var(--status-info-bg); color: #0747A6; }
+
+    /* Buttons */
+    .btn-primary {
+      background: var(--orange-primary);
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 14px 20px;
+      border-radius: 12px;
+      border: none;
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255, 122, 0, 0.25);
+    }
+
+    .btn-secondary {
+      background: var(--navy-primary);
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 14px 20px;
+      border-radius: 12px;
+      border: none;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Input Fields */
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .input-group label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--navy-dark);
+    }
+
+    .input-field {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 14px;
+      color: var(--navy-darkest);
+    }
+
+    /* Bottom Navigation Bar */
+    .bottom-nav {
+      height: 64px;
+      background: #FFFFFF;
+      border-top: 1px solid #E2E8F0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      font-weight: 600;
+      color: #94A3B8;
+    }
+
+    .nav-item.active {
+      color: var(--orange-primary);
+    }
+
+    /* Stats Widget Header */
+    .stats-header {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%);
+      border-radius: 20px;
+      padding: 20px;
+      color: #FFFFFF;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-info">
+    <h1>SI-ASET Mobile - Complete Figma UI Bundle (Kelompok 1)</h1>
+    <p>Seluruh 15 Halaman & Activity SI-ASET Mobile dari Login hingga Laporan & Analitik LENGKAP untuk di-import langsung ke Figma Canvas.</p>
+  </div>
+
+  <div class="screen-grid">
+
+    <!-- FRAME 01: LOGIN SCREEN -->
+    <div style="position: relative;">
+      <span class="frame-title">01. Login Screen</span>
+      <div class="mobile-frame">
+        <div class="status-bar"><span>09:41</span> <span>5G 100%</span></div>
+        <div class="screen-content" style="justify-content: center; gap: 24px;">
+          <div style="text-align: center;">
+            <div style="width: 64px; height: 64px; background: var(--orange-primary); border-radius: 16px; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px; color: #fff;">SA</div>
+            <h2 style="font-size: 24px; font-weight: 800; color: var(--navy-dark);">SI-ASET Mobile</h2>
+            <p style="font-size: 13px; color: #64748B; margin-top: 4px;">Sistem Informasi Manajemen Aset Terpadu</p>
+          </div>
+
+          <div class="glass-card" style="display: flex; flex-direction: column; gap: 16px;">
+            <div class="input-group">
+              <label>Email / NIP</label>
+              <div class="input-field">kelompok1@siaset.go.id</div>
+            </div>
+            <div class="input-group">
+              <label>Kata Sandi</label>
+              <div class="input-field">••••••••••••</div>
+            </div>
+            <button class="btn-primary">MASUK SEKARANG</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAME 02: DASHBOARD SCREEN -->
+    <div style="position: relative;">
+      <span class="frame-title">02. Main Dashboard</span>
+      <div class="mobile-frame">
+        <div class="status-bar"><span>09:41</span> <span>5G 100%</span></div>
+        <div class="app-bar">
+          <div>
+            <div style="font-size: 11px; color: #64748B;">Selamat Pagi,</div>
+            <div style="font-size: 16px; font-weight: 800; color: var(--navy-dark);">Kelompok 1</div>
+          </div>
+          <div style="width: 36px; height: 36px; background: #E2E8F0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--navy-primary);">K1</div>
+        </div>
+        <div class="screen-content">
+          <div class="stats-header">
+            <div style="font-size: 12px; opacity: 0.8;">Total Nilai Perolehan Aset</div>
+            <div style="font-size: 26px; font-weight: 800; margin: 4px 0 12px;">Rp 1.450.000.000</div>
+            <div style="display: flex; gap: 16px; font-size: 12px;">
+              <div>Total Aset: <strong>142 Unit</strong></div>
+              <div>Aktif: <strong>128 Unit</strong></div>
+            </div>
+          </div>
+
+          <div style="font-size: 14px; font-weight: 700; color: var(--navy-dark); margin-top: 8px;">Aset Terbaru</div>
+
+          <div class="card" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-weight: 700; font-size: 14px; color: var(--navy-dark);">MacBook Pro M2 Max</div>
+              <div style="font-size: 11px; color: #64748B;">SN: MBP-2024-001</div>
+            </div>
+            <span class="badge badge-success">BAIK</span>
+          </div>
+
+          <div class="card" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-weight: 700; font-size: 14px; color: var(--navy-dark);">Toyota Avanza Veloz</div>
+              <div style="font-size: 11px; color: #64748B;">Plat: B 1892 PQA</div>
+            </div>
+            <span class="badge badge-warning">PEMELIHARAAN</span>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item active"><div>🏠</div>Beranda</div>
+          <div class="nav-item"><div>📦</div>Aset</div>
+          <div class="nav-item"><div>📋</div>Penugasan</div>
+          <div class="nav-item"><div>👤</div>Profil</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAME 03: DAFTAR ASET -->
+    <div style="position: relative;">
+      <span class="frame-title">03. Daftar Aset</span>
+      <div class="mobile-frame">
+        <div class="status-bar"><span>09:41</span> <span>5G 100%</span></div>
+        <div class="app-bar">
+          <div class="app-bar-title">Daftar Aset Terdaftar</div>
+          <div style="font-size: 18px;">🔍</div>
+        </div>
+        <div class="screen-content">
+          <div class="input-field" style="color: #94A3B8;">Cari nama aset, kode, atau seri...</div>
+
+          <div class="card" style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; justify-content: space-between;">
+              <span class="badge badge-info">ELEKTRONIK</span>
+              <span class="badge badge-success">SANGAT BAIK</span>
+            </div>
+            <div style="font-size: 15px; font-weight: 700; color: var(--navy-dark);">Dell XPS 15 9530 Developer</div>
+            <div style="font-size: 12px; color: #64748B;">Kode: AST-2024-ELK-09</div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--orange-primary);">Rp 32.000.000</div>
+          </div>
+
+          <div class="card" style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; justify-content: space-between;">
+              <span class="badge badge-info">KENDARAAN</span>
+              <span class="badge badge-warning">RUSAK RINGAN</span>
+            </div>
+            <div style="font-size: 15px; font-weight: 700; color: var(--navy-dark);">Honda HR-V Special Edition</div>
+            <div style="font-size: 12px; color: #64748B;">Kode: AST-2023-KND-02</div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--orange-primary);">Rp 385.000.000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAME 04: DETAIL ASET -->
+    <div style="position: relative;">
+      <span class="frame-title">04. Detail Aset</span>
+      <div class="mobile-frame">
+        <div class="status-bar"><span>09:41</span> <span>5G 100%</span></div>
+        <div class="app-bar">
+          <div>←</div>
+          <div class="app-bar-title">Detail Aset</div>
+          <div>QR</div>
+        </div>
+        <div class="screen-content">
+          <div style="height: 180px; background: #E2E8F0; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #64748B;">
+            FOTO ASET (Dell XPS 15)
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="badge badge-info">ELEKTRONIK</span>
+            <span class="badge badge-success">AKTIF / BAIK</span>
+          </div>
+          <h2 style="font-size: 20px; font-weight: 800; color: var(--navy-dark);">Dell XPS 15 9530 Developer</h2>
+          <div style="font-size: 13px; color: #64748B;">Kode Aset: <strong>AST-2024-ELK-09</strong></div>
+
+          <div class="card" style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="font-size: 14px; font-weight: 700; color: var(--navy-dark);">Spesifikasi & Detail</div>
+            <div style="display: flex; justify-content: space-between; font-size: 12px;"><span style="color: #64748B;">Nomor Seri:</span><span>DXP9530-88192</span></div>
+            <div style="display: flex; justify-content: space-between; font-size: 12px;"><span style="color: #64748B;">Tahun Perolehan:</span><span>2024</span></div>
+            <div style="display: flex; justify-content: space-between; font-size: 12px;"><span style="color: #64748B;">Pengguna Aset:</span><span>Kelompok 1</span></div>
+            <div style="display: flex; justify-content: space-between; font-size: 12px;"><span style="color: #64748B;">Lokasi:</span><span>Lantai 3 - Ruang IT</span></div>
+          </div>
+
+          <button class="btn-primary">CETAK LABEL QR CODE</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAME 05: PENGADAAN ASET -->
+    <div style="position: relative;">
+      <span class="frame-title">05. Pengadaan Aset</span>
+      <div class="mobile-frame">
+        <div class="status-bar"><span>09:41</span> <span>5G 100%</span></div>
+        <div class="app-bar">
+          <div class="app-bar-title">Pengajuan Pengadaan</div>
+          <div style="font-size: 20px;">+</div>
+        </div>
+        <div class="screen-content">
+          <div class="card" style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; justify-content: space-between;">
+              <span class="badge badge-warning">MENUNGGU PROSES</span>
+              <span style="font-size: 11px; color: #64748B;">12 Mar 2025</span>
+            </div>
+            <div style="font-weight: 700; font-size: 15px; color: var(--navy-dark);">Pengadaan Server Rack 42U</div>
+            <div style="font-size: 12px; color: #64748B;">Pengusul: Kelompok 1</div>
+            <div style="font-size: 14px; font-weight: 800; color: var(--orange-primary);">Estimasi: Rp 85.000.000</div>
+          </div>
+
+          <div class="card" style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; justify-content: space-between;">
+              <span class="badge badge-success">DISETUJUI</span>
+              <span style="font-size: 11px; color: #64748B;">05 Mar 2025</span>
+            </div>
+            <div style="font-weight: 700; font-size: 15px; color: var(--navy-dark);">Pengadaan 5 Unit iPad Air M2</div>
+            <div style="font-size: 12px; color: #64748B;">Pengusul: Divisi Operasional</div>
+            <div style="font-size: 14px; font-weight: 800; color: var(--orange-primary);">Estimasi: Rp 60.000.000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAME 06: PENUGASAN & PERAWATAN LIST -->
+    <div style="position: relative;">
+      <span class="frame-title">06. Penugasan & Perawatan</span>
+      <div class="mobile-frame">
+        <div class="status-bar"><span>09:41</span> <span>5G 100%</span></div>
+        <div class="app-bar">
+          <div class="app-bar-title">Penugasan Perawatan</div>
+          <div style="font-size: 20px;">+</div>
+        </div>
+        <div class="screen-content">
+          <div class="card" style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; justify-content: space-between;">
+              <span class="badge badge-warning">DALAM PROSES</span>
+              <span style="font-size: 11px; color: #64748B;">Batas: 20 Mar</span>
+            </div>
+            <div style="font-weight: 700; font-size: 15px; color: var(--navy-dark);">Maintenance AC Central Lt.2</div>
+            <div style="font-size: 12px; color: #64748B;">Teknisi: Budi Santoso</div>
+          </div>
+
+          <div class="card" style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; justify-content: space-between;">
+              <span class="badge badge-success">SELESAI</span>
+              <span style="font-size: 11px; color: #64748B;">10 Mar</span>
+            </div>
+            <div style="font-weight: 700; font-size: 15px; color: var(--navy-dark);">Servis Rutin Toyota Veloz</div>
+            <div style="font-size: 12px; color: #64748B;">Teknisi: Bengkel Resmi Toyota</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAME 07: DETAIL PENUGASAN -->
+    <div style="position: relative;">
+      <span class="frame-title">07. Detail Penugasan</span>
+      <div class="mobile-frame">
+        <div class="status-bar"><span>09:41</span> <span>5G 100%</span></div>
+        <div class="app-bar">
+          <div>←</div>
+          <div class="app-bar-title">Detail Tugas</div>
+        </div>
+        <div class="screen-content">
+          <span class="badge badge-warning" style="align-self: flex-start;">SEDANG DIKERJAKAN</span>
+          <h3 style="font-size: 18px; font-weight: 800; color: var(--navy-dark);">Maintenance AC Central Lt.2</h3>
+
+          <div class="card" style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="font-size: 13px; color: #64748B;">Penanggung Jawab: <strong>Kelompok 1</strong></div>
+            <div style="font-size: 13px; color: #64748B;">Teknisi: <strong>Budi Santoso</strong></div>
+            <div style="font-size: 13px; color: #64748B;">Lokasi: <strong>Gedung Utama Lt. 2</strong></div>
+            <div style="font-size: 13px; color: #64748B;">Catatan: <strong>Pembersihan filter & penambahan freon R32.</strong></div>
+          </div>
+
+          <button class="btn-primary">UPDATE STATUS TERKINI</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAME 08: FORM PENUGASAN -->
+    <div style="position: relative;">
+      <span class="frame-title">08. Form Penugasan</span>
+      <div class="mobile-frame">
+        <div class="status-bar"><span>09:41</span> <span>5G 100%</span></div>
+        <div class="app-bar">
+          <div>←</div>
+          <div class="app-bar-title">Buat Penugasan Baru</div>
+        </div>
+        <div class="screen-content">
+          <div class="input-group">
+            <label>Pilih Aset Terkait</label>
+            <div class="input-field">Dell XPS 15 (AST-2024-ELK-09)</div>
+          </div>
+
+          <div class="input-group">
+            <label>Judul Penugasan</label>
+            <div class="input-field">Upgrade RAM 32GB & Pasta Thermal</div>
+          </div>
+
+          <div class="input-group">
+            <label>Pilih Teknisi / Pelaksana</label>
+            <div class="input-field">Tim IT Support (Kelompok 1)</div>
+          </div>
+
+          <div class="input-group">
+            <label>Catatan Instruksi</label>
+            <div class="input-field" style="height: 80px;">Harap dikerjakan sebelum tanggal 25 Maret...</div>
+          </div>
+
+          <button class="btn-primary">SIMPAN & KIRIM TUGAS</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAME 09: BERITA ACARA (BAST) -->
+    <div style="position: relative;">
+      <span class="frame-title">09. Berita Acara (BAST)</span>
+      <div class="mobile-frame">
+        <div class="status-bar"><span>09:41</span> <span>5G 100%</span></div>
+        <div class="app-bar">
+          <div class="app-bar-title">Berita Acara (BAST)</div>
+        </div>
+        <div class="screen-content">
+          <div class="card" style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; justify-content: space-between;">
+              <span class="badge badge-success">TERVERIFIKASI</span>
+              <span style="font-size: 11px; color: #64748B;">BAST-2025-081</span>
+            </div>
+            <div style="font-weight: 700; font-size: 14px; color: var(--navy-dark);">Serah Terima Laptop Macbook Pro</div>
+            <div style="font-size: 12px; color: #64748B;">Penerima: Kelompok 1</div>
+          </div>
+
+          <div class="card" style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; justify-content: space-between;">
+              <span class="badge badge-info">DRAFT</span>
+              <span style="font-size: 11px; color: #64748B;">BAST-2025-082</span>
+            </div>
+            <div style="font-weight: 700; font-size: 14px; color: var(--navy-dark);">Pengembalian Mobil Dinas</div>
+            <div style="font-size: 12px; color: #64748B;">Penerima: Divisi Logistik</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAME 10: DETAIL BAST -->
+    <div style="position: relative;">
+      <span class="frame-title">10. Detail BAST</span>
+      <div class="mobile-frame">
+        <div class="status-bar"><span>09:41</span> <span>5G 100%</span></div>
+        <div class="app-bar">
+          <div>←</div>
+          <div class="app-bar-title">Detail Berita Acara</div>
+        </div>
+        <div class="screen-content">
+          <span class="badge badge-success" style="align-self: flex-start;">TERVERIFIKASI & SAH</span>
+          <h3 style="font-size: 18px; font-weight: 800; color: var(--navy-dark);">Serah Terima Laptop Macbook Pro</h3>
+
+          <div class="card" style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="font-size: 12px; color: #64748B;">Nomor Dokumen: <strong>BAST-2025-081</strong></div>
+            <div style="font-size: 12px; color: #64748B;">Pihak Pertama (Pemberi): <strong>Rahmat Hidayat (Manager HR)</strong></div>
+            <div style="font-size: 12px; color: #64748B;">Pihak Kedua (Penerima): <strong>Kelompok 1</strong></div>
+            <div style="font-size: 12px; color: #64748B;">Tanggal: <strong>14 Maret 2025</strong></div>
+          </div>
+
+          <button class="btn-secondary">UNDUH PDF DOKUMEN BAST</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAME 11: OPERASIONAL HUB -->
+    <div style="position: relative;">
+      <span class="frame-title">11. Operasional Hub</span>
+      <div class="mobile-frame">
+        <div class="status-bar"><span>09:41</span> <span>5G 100%</span></div>
+        <div class="app-bar">
+          <div class="app-bar-title">Operasional Hub</div>
+        </div>
+        <div class="screen-content">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div class="card" style="text-align: center; padding: 20px;">
+              <div style="font-size: 28px; margin-bottom: 8px;">📦</div>
+              <div style="font-weight: 700; font-size: 13px; color: var(--navy-dark);">Pengadaan</div>
+            </div>
+            <div class="card" style="text-align: center; padding: 20px;">
+              <div style="font-size: 28px; margin-bottom: 8px;">🔧</div>
+              <div style="font-weight: 700; font-size: 13px; color: var(--navy-dark);">Perawatan</div>
+            </div>
+            <div class="card" style="text-align: center; padding: 20px;">
+              <div style="font-size: 28px; margin-bottom: 8px;">📜</div>
+              <div style="font-weight: 700; font-size: 13px; color: var(--navy-dark);">BAST</div>
+            </div>
+            <div class="card" style="text-align: center; padding: 20px;">
+              <div style="font-size: 28px; margin-bottom: 8px;">📊</div>
+              <div style="font-weight: 700; font-size: 13px; color: var(--navy-dark);">Laporan</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAME 12: LAPORAN & ANALITIK -->
+    <div style="position: relative;">
+      <span class="frame-title">12. Laporan & Analitik</span>
+      <div class="mobile-frame">
+        <div class="status-bar"><span>09:41</span> <span>5G 100%</span></div>
+        <div class="app-bar">
+          <div class="app-bar-title">Laporan & Rekapitulasi</div>
+        </div>
+        <div class="screen-content">
+          <div class="card">
+            <div style="font-size: 14px; font-weight: 700; color: var(--navy-dark); margin-bottom: 12px;">Distribusi Kategori Aset</div>
+            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px;">
+              <div style="display: flex; justify-content: space-between;"><span>Elektronik & IT (65%)</span><strong>92 Unit</strong></div>
+              <div style="height: 8px; background: #E2E8F0; border-radius: 4px; overflow: hidden;"><div style="width: 65%; height: 100%; background: var(--orange-primary);"></div></div>
+
+              <div style="display: flex; justify-content: space-between; margin-top: 6px;"><span>Kendaraan Dinas (25%)</span><strong>35 Unit</strong></div>
+              <div style="height: 8px; background: #E2E8F0; border-radius: 4px; overflow: hidden;"><div style="width: 25%; height: 100%; background: var(--navy-primary);"></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div style="font-size: 14px; font-weight: 700; color: var(--navy-dark); margin-bottom: 8px;">Ringkasan Kondisi</div>
+            <div style="display: flex; justify-content: space-around; text-align: center; margin-top: 12px;">
+              <div><div style="font-size: 18px; font-weight: 800; color: var(--status-success);">120</div><div style="font-size: 10px; color: #64748B;">Baik</div></div>
+              <div><div style="font-size: 18px; font-weight: 800; color: var(--status-warning);">18</div><div style="font-size: 10px; color: #64748B;">Rusak Ringan</div></div>
+              <div><div style="font-size: 18px; font-weight: 800; color: var(--status-danger);">4</div><div style="font-size: 10px; color: #64748B;">Rusak Berat</div></div>
+            </div>
+          </div>
+
+          <button class="btn-primary">EXPORT REKAPITULASI (EXCEL)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAME 13: NOTIFIKASI CENTER -->
+    <div style="position: relative;">
+      <span class="frame-title">13. Notifikasi Center</span>
+      <div class="mobile-frame">
+        <div class="status-bar"><span>09:41</span> <span>5G 100%</span></div>
+        <div class="app-bar">
+          <div class="app-bar-title">Pemberitahuan</div>
+        </div>
+        <div class="screen-content">
+          <div class="card" style="display: flex; gap: 12px; align-items: flex-start;">
+            <div style="padding: 8px; background: var(--status-info-bg); border-radius: 10px; color: var(--navy-primary);">🔔</div>
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--navy-dark);">Penugasan Baru Diterima</div>
+              <div style="font-size: 11px; color: #64748B; margin-top: 2px;">Anda ditugaskan untuk melakukan maintenance server.</div>
+              <div style="font-size: 10px; color: #94A3B8; margin-top: 4px;">10 menit yang lalu</div>
+            </div>
+          </div>
+
+          <div class="card" style="display: flex; gap: 12px; align-items: flex-start;">
+            <div style="padding: 8px; background: var(--status-success-bg); border-radius: 10px; color: var(--status-success);">✅</div>
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--navy-dark);">BAST Berhasil Dikonfirmasi</div>
+              <div style="font-size: 11px; color: #64748B; margin-top: 2px;">Dokumen BAST-2025-081 telah disetujui.</div>
+              <div style="font-size: 10px; color: #94A3B8; margin-top: 4px;">1 jam yang lalu</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAME 14: SCAN QR CODE -->
+    <div style="position: relative;">
+      <span class="frame-title">14. Scan QR Code</span>
+      <div class="mobile-frame">
+        <div class="status-bar" style="color: #fff;"><span>09:41</span> <span>5G 100%</span></div>
+        <div class="screen-content" style="background: #05162A; color: #fff; justify-content: center; align-items: center; text-align: center;">
+          <h3 style="font-size: 18px; font-weight: 700;">Pindai QR Code Aset</h3>
+          <p style="font-size: 12px; color: #94A3B8; margin-top: 4px;">Arahkan kamera ke kode QR pada fisik barang</p>
+
+          <div style="width: 220px; height: 220px; border: 3px dashed var(--orange-primary); border-radius: 20px; margin: 30px 0; display: flex; align-items: center; justify-content: center;">
+            <div style="width: 180px; height: 180px; background: rgba(255, 122, 0, 0.1); border-radius: 12px;"></div>
+          </div>
+
+          <button class="btn-primary" style="width: 80%;">INPUT KODE MANUAL</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAME 15: PROFIL PENGGUNA -->
+    <div style="position: relative;">
+      <span class="frame-title">15. Profil Pengguna</span>
+      <div class="mobile-frame">
+        <div class="status-bar"><span>09:41</span> <span>5G 100%</span></div>
+        <div class="app-bar">
+          <div class="app-bar-title">Profil Saya</div>
+        </div>
+        <div class="screen-content" style="align-items: center;">
+          <div style="width: 84px; height: 84px; background: var(--navy-primary); border-radius: 50%; color: #fff; font-size: 32px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-top: 12px;">K1</div>
+          <h3 style="font-size: 18px; font-weight: 800; color: var(--navy-dark); margin-top: 12px;">Kelompok 1</h3>
+          <span class="badge badge-info">PENGELOLA ASET UTAMA</span>
+
+          <div class="card" style="width: 100%; margin-top: 20px; display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; justify-content: space-between; font-size: 13px;">
+              <span style="color: #64748B;">User</span>
+              <span style="font-weight: 700; color: var(--navy-dark);">Kelompok 1</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 13px;">
+              <span style="color: #64748B;">NIP</span>
+              <span style="font-weight: 700; color: var(--navy-dark);">199208152020011001</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 13px;">
+              <span style="color: #64748B;">Kantor</span>
+              <span style="font-weight: 700; color: var(--navy-dark);">Kantor Pusat Jakarta</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 13px;">
+              <span style="color: #64748B;">Divisi</span>
+              <span style="font-weight: 700; color: var(--navy-dark);">Teknologi Informasi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
